@@ -1,3 +1,3 @@
-require('eric.plugins')
-require('eric.settings')
-require('eric.keybinds')
+require("jean.plugins")
+require("jean.settings")
+require("jean.keybinds")
