@@ -52,9 +52,6 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Nvim Tree toggle
-keymap.set("n", "<space>e", ":Explore<cr>")
-
 -- Telescope
 keymap.set("n", "<space>ff", ":Telescope find_files<cr>")
 keymap.set("n", "<space>fs", ":Telescope live_grep<cr>")
