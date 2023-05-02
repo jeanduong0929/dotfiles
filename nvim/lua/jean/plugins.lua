@@ -28,38 +28,38 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { { 'nvim-lua/plenary.nvim' } },
-        config = function() require('eric.plugins.telescope') end
+        config = function() require('jean.plugins.telescope') end
     }
 
     -- syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSupdate',
-        config = function() require('eric.plugins.treesitter') end
+        config = function() require('jean.plugins.treesitter') end
     }
 
     -- color scheme
     use {
         "catppuccin/nvim",
         as = "catppuccin",
-        config = function() require('eric.plugins.theme') end
+        config = function() require('jean.plugins.theme') end
     }
 
     -- fancier status bar
     use {
         'nvim-lualine/lualine.nvim',
-        config = function() require('eric.plugins.lualine') end,
+        config = function() require('jean.plugins.lualine') end,
     }
 
     use {
         'vimwiki/vimwiki',
-        config = function() require('eric.plugins.vimwiki') end,
+        config = function() require('jean.plugins.vimwiki') end,
     }
 
     -- startup screen
     use {
         'goolord/alpha-nvim',
-        config = function() require('eric.plugins.alpha') end,
+        config = function() require('jean.plugins.alpha') end,
     }
 
     -- distraction-free writing mode
@@ -67,7 +67,7 @@ return require('packer').startup(function(use)
         'folke/zen-mode.nvim',
         opt = true,
         cmd = { 'ZenMode' },
-        config = function() require('eric.plugins.zen-mode') end
+        config = function() require('jean.plugins.zen-mode') end
     }
 
     -- lsp
@@ -91,7 +91,7 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
         },
-        config = function() require('eric.plugins.lsp') end
+        config = function() require('jean.plugins.lsp') end
     }
 
     -- null-ls
