@@ -1,13 +1,13 @@
 -- install packer if not installed on this machine
 local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
 -- first time startup?
@@ -21,85 +21,109 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+	use("wbthomason/packer.nvim")
 
-    -- fuzzy finder
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = function() require('jean.plugins.telescope') end
-    }
+	-- fuzzy finder
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("jean.plugins.telescope")
+		end,
+	})
 
-    -- syntax highlighting
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSupdate',
-        config = function() require('jean.plugins.treesitter') end
-    }
+	-- syntax highlighting
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSupdate",
+		config = function()
+			require("jean.plugins.treesitter")
+		end,
+	})
 
-    -- color scheme
-    use {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function() require('jean.plugins.theme') end
-    }
+	-- color scheme
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+		config = function()
+			require("jean.plugins.theme")
+		end,
+	})
 
-    -- fancier status bar
-    use {
-        'nvim-lualine/lualine.nvim',
-        config = function() require('jean.plugins.lualine') end,
-    }
+	-- fancier status bar
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("jean.plugins.lualine")
+		end,
+	})
 
-    use {
-        'vimwiki/vimwiki',
-        config = function() require('jean.plugins.vimwiki') end,
-    }
+	use({
+		"vimwiki/vimwiki",
+		config = function()
+			require("jean.plugins.vimwiki")
+		end,
+	})
 
-    -- startup screen
-    use {
-        'goolord/alpha-nvim',
-        config = function() require('jean.plugins.alpha') end,
-    }
+	-- startup screen
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("jean.plugins.alpha")
+		end,
+	})
 
-    -- distraction-free writing mode
-    use {
-        'folke/zen-mode.nvim',
-        opt = true,
-        cmd = { 'ZenMode' },
-        config = function() require('jean.plugins.zen-mode') end
-    }
+	-- distraction-free writing mode
+	use({
+		"folke/zen-mode.nvim",
+		opt = true,
+		cmd = { "ZenMode" },
+		config = function()
+			require("jean.plugins.zen-mode")
+		end,
+	})
 
-    -- lsp
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        requires = {
-            -- LSP support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+	-- lsp
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		requires = {
+			-- LSP support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
-            -- autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
+			-- autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
 
-            -- snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-        },
-        config = function() require('jean.plugins.lsp') end
-    }
+			-- snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+		config = function()
+			require("jean.plugins.lsp")
+		end,
+	})
 
-    -- null-ls
-    use { "jose-elias-alvarez/null-ls.nvim" }
+	-- null-ls
+	use({ "jose-elias-alvarez/null-ls.nvim" })
 
+	-- autopairs / autotag
+	use({
+		"windwp/nvim-autopairs",
+	})
+	use({
+		"windwp/nvim-ts-autotag",
+	})
 
-    -- automatically set up the configuration after cloning packer.nvim
-    if packer_bootstrap then
-        require('packer').sync()
-    end
+	-- automatically set up the configuration after cloning packer.nvim
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)

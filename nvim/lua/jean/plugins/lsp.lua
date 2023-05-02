@@ -58,6 +58,13 @@ lsp.on_attach(function(client, bufnr)
 
 	lsp.buffer_autoformat()
 end)
+-- Require and setup nvim-autopairs
+local autopairs = require("nvim-autopairs")
+autopairs.setup()
+
+-- Setup nvim-autopairs to work with nvim-cmp
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 lsp.setup()
 
