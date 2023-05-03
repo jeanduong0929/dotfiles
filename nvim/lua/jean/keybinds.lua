@@ -19,8 +19,16 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "dw", 'vb"_d')
 keymap.set("i", "dw", "<C-w>")
 
+-- Highlight whole function
+keymap.set("n", "df", "V$%")
+
+-- Highlight body function
+keymap.set("n", "db", "v%")
 -- Delete a line without registering
 keymap.set("n", "D", '"_dd')
+
+-- Yank to clipboard
+keymap.set("v", "y", ":y+<CR>")
 
 -- Go to beginning/end of line
 keymap.set("n", "E", "$")
